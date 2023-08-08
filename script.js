@@ -29,6 +29,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // "멈춤" 버튼을 클릭할 때 처리되는 함수
+  const btnHold = document.querySelector(".btn--hold");
+  btnHold.addEventListener("click", function () {
+    if (isGamePlaying) {
+      // 1. 현재 점수를 플레이어 점수에 추가
+      playerScores[activePlayer].textContent =
+        parseInt(playerScores[activePlayer].textContent) + currentScore;
+
+      // 2. 플레이어의 점수가 50 이상이면 승리 처리
+      if (parseInt(playerScores[activePlayer].textContent) >= 50) {
+        playerNames[activePlayer].textContent = "Winner!";
+        dice.style.display = "none";
+        isGamePlaying = false;
+      } else {
+        // 3. 플레이어 변경 및 현재 점수 초기화
+        switchPlayer();
+      }
+    }
+  });
+
   // 플레이어 변경 함수
   function switchPlayer() {
     currentScore = 0;
