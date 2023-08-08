@@ -58,4 +58,33 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".player--0").classList.toggle("player--active");
     document.querySelector(".player--1").classList.toggle("player--active");
   }
+
+  // "게임 다시하기" 버튼을 클릭할 때 처리되는 함수
+  const btnNew = document.querySelector(".btn--new");
+  btnNew.addEventListener("click", function () {
+    // 게임 상태와 점수 초기화
+    // 현재 플레이 중인 플레이어 초기화
+    activePlayer = 0;
+
+    // 현재 점수 초기화
+    currentScore = 0;
+    currentScores[0].textContent = "0";
+    currentScores[1].textContent = "0";
+
+    // 플레이어 점수 초기화
+    playerScores[0].textContent = "0";
+    playerScores[1].textContent = "0";
+
+    // 플레이어 이름 초기화
+    playerNames[0].textContent = "Player 1";
+    playerNames[1].textContent = "Player 2";
+
+    // 게임 상태 초기화, 주사위 이미지 표시
+    isGamePlaying = true;
+    dice.style.display = "block";
+
+    // 플레이어 표시 초기화
+    document.querySelector(".player--0").classList.add("player--active");
+    document.querySelector(".player--1").classList.remove("player--active");
+  });
 });
