@@ -28,4 +28,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
+  // 플레이어 변경 함수
+  function switchPlayer() {
+    currentScore = 0;
+    currentScores[activePlayer].textContent = "0";
+    activePlayer = activePlayer === 0 ? 1 : 0;
+
+    document.querySelector(".player--0").classList.toggle("player--active");
+    document.querySelector(".player--1").classList.toggle("player--active");
+  }
 });
